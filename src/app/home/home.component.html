@@ -1,0 +1,32 @@
+<div class="container shadow p-3 mb-5 bg-white rounded border">
+<h3 style="color: seagreen;">Vaccination details nearby you</h3>
+<hr>
+<div class="table-responsive">
+        <table class="table">
+        <thead style="
+        background-color: rgb(213, 243, 226);">
+        <tr>
+          <th scope="col" style="color: seagreen;">Center Id</th>
+          <th scope="col"  style="color: seagreen;">Block Name</th>
+          <th scope="col"  style="color: seagreen;">Center Name</th>
+          <th scope="col"  style="color: seagreen;">Location</th>
+          <th scope="col" style="color: seagreen;">City/state</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let det of data" (click)="getCenterId(det)" routerLink="/calander">
+          <th scope="row"  style="color: seagreen;">{{ det.center_id }}</th>
+          <td>
+            {{ det.block_name}}
+          </td>
+          <td>
+              {{det.name}}
+          </td>
+          <td>{{det.location}}</td>
+          <td>{{det.district_name}},{{det.state_name}},<span class="badge badge-success">{{det.pincode}}</span></td>
+        </tr>
+
+        </tbody>
+      </table>
+      </div>
+</div>

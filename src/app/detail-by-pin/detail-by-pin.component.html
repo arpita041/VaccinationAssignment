@@ -1,0 +1,61 @@
+<div class="container border shadow p-3 mb-5 bg-white rounded">
+<br>
+<form #pinForm= "ngForm">
+ 
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <label>PinCode</label>
+    <input type="text" class="form-control" name="pinCode" placeholder="Pin code" [class.is-invalid]="pn.invalid && pn.touched" #pn ="ngModel"
+     [(ngModel)]="pin" required pattern="[0-9]{6}" style="background-color: rgb(213, 243, 226);">
+     <!-- <small class="text-danger" [class.d-none]="pin.valid || pin.untouched">pin is invalid</small> -->
+  </div>
+  <div class="form-group col-md-3">
+    <label>Date</label>
+    <input type="text" class="form-control" id ="date" name="date" placeholder="dd-mm-yyyy" [(ngModel)]="date" required style="background-color: rgb(213, 243, 226);">
+  </div>
+  <div class="form-group col-md-3">
+    <label>Age</label>
+    <input type="text" class="form-control" name="age" placeholder="Age" [(ngModel)]="age" required style="background-color: rgb(213, 243, 226);">
+  </div>
+  <div class="col-md-3">
+    <br>
+    <button class="m-2 ml-5 center btn btn-color" [disabled]="!pinForm.valid" (click)="sendValue()">Search </button>
+  </div>
+</div>
+</form>
+<br>
+
+<div *ngIf="length>0" class="table-responsive">
+  <table class="table">
+  <thead>
+  <tr>
+    <th scope="col" style="color: seagreen;">CenterId</th>
+    <th scope="col" style="color: seagreen;">Capacity</th>
+    <th scope="col" style="color: seagreen;">MinAge</th>
+   <th scope="col" style="color: seagreen;">Vaccine</th>
+   <th scope="col" style="color:seagreen">Center Name</th>
+    <th scope="col" style="color: seagreen;">Address</th>
+    
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let det of data"  (click)="getCenterId(det)" routerLink="/calander">
+    <th scope="row" style="color: seagreen;">{{ det.center_id }}</th>
+    <td> <span class="badge badge-success"> {{ det.available_capacity }}</span>
+     
+    </td>
+    <td><span class="badge badge-success">{{det.min_age_limit}}+</span></td>
+    <td>{{det.vaccine}}</td>
+    <td>{{det.name}}</td>
+    <td>{{det.address}}, {{det.state_name}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div *ngIf= "length < 0 ">
+<h1>Please Enter the correct information</h1>
+</div>
+<div *ngIf="length==0 && clicked">
+<h1>No details found for upper information</h1>
+</div>
+</div>

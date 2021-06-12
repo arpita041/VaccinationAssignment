@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.btn-color
+{
+    background-color: seagreen;
+    color: white;
+}
+
+tr:hover
+{
+background-color: rgb(213, 243, 226);
+}
+body
+{
+    background-color: rgb(213, 243, 226);
+}

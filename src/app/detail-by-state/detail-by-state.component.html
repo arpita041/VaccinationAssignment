@@ -1,0 +1,53 @@
+<div class="container border shadow p-3 mb-5 bg-white rounded">
+    <h4 style="color:seagreen;">Please select a state</h4>
+    <br>
+    <div class="row">
+        <div class="col-4">
+    <select name="st" class="form-control" (change)="selectChangeHandler($event)" required style="background-color: rgb(213, 243, 226);">
+        <option value="default">choose...</option>
+        <option *ngFor="let data of state" value="{{data.state_name}}">{{data.state_name}}</option>
+    </select>
+    </div>
+        <div class="col-3" *ngIf="len>0">
+            <select name="st" class="form-control" (change)="districtName($event)" required style="background-color: rgb(213, 243, 226);">
+                <option value="default">choose...</option>
+                <option *ngFor="let data of district" value="{{data.district_name}}">{{data.district_name}}</option>
+            </select>
+        </div>
+        <div class="col-3" *ngIf="len>0">
+            <input type="text" class="form-control" id ="date" name="date" placeholder="dd-mm-yyyy" [(ngModel)]="date" required style="background-color: rgb(213, 243, 226);">
+        </div>
+      <div class="col-2" *ngIf="len>0">
+<button class="btn btn-color" (click)="getDetails()">Search</button>     
+    </div>
+ </div>
+<hr>
+<div *ngIf="vacLen>0">
+<table class="table">
+    <thead style="background-color: rgb(213, 243, 226);">
+    <tr>
+      <th scope="col" style="color: seagreen;">Center Id</th>
+      <th scope="col" style="color: seagreen;">Capacity</th>
+      <th scope="col" style="color: seagreen;">MinAge</th>
+      <th scope="col" style="color: seagreen;">Name</th>
+      <th scope="col" style="color: seagreen;">Vaccine</th>
+      <th scope="col" style="color: seagreen;">Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let det of vaccinationData"  (click)="getCenterId(det)" routerLink="/calander">
+      <th scope="row" style="color: seagreen;">{{ det.center_id }}</th>
+      <td><span class="badge badge-success">{{det.available_capacity}}</span></td>
+      <td><span class="badge badge-success">{{det.min_age_limit}}</span></td>
+      <td>
+        {{ det.name}}
+      </td>
+      <td>
+          {{det.vaccine}}
+      </td>
+      <td>{{det.address}} , {{det.block_name}} ,{{det.district_name}} <span class="badge badge-success">{{det.pincode}}</span></td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+ </div>

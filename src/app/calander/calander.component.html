@@ -1,0 +1,38 @@
+<div class="container shadow p-3 mb-5 bg-white rounded border">
+    <div *ngIf="len==1">
+    <h3 style="color: seagreen;">Sessions</h3>
+    <hr>
+    <div class="session m-2" *ngFor="let det of sessions">
+        <br>
+        <strong class="m-3" style="color: seagreen;">Date:{{det.date}}</strong>
+<br>
+<div class="row">
+    <div class="col-9 ml-3">
+
+<h4 style="color: seagreen;">{{centerName}}    </h4>   
+<span>slots:</span>
+<span *ngFor="let data of det.slots">
+  <li>{{data}}</li>
+</span>
+<small>{{centerAddress}}, {{district}},{{pinCode}},{{state}}</small>
+<br>
+<span class="badge badge-success">{{det.min_age_limit}}+</span>
+<br>
+    </div>
+<div class="mt-5 col ml-3">
+    <span style="color: gray;">
+        {{det.vaccine}}
+    </span>
+    <br>
+    <span class="badge badge-success ml-3">{{fee}}</span>
+</div>
+</div>
+    </div>
+    </div>
+
+     <div *ngIf="len==0">
+        <span><h2 style="color: seagreen;">No details found</h2></span>
+    </div>
+   
+ </div>
+    
