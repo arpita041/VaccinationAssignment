@@ -7,15 +7,15 @@ import { GetDataService } from '../get-data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-lat:any;
-lon:any;
-data:any=[];
+lat: any;
+lon: any;
+data: any = [];
 date = new Date();
 day = this.date.getDate();
-mon= this.date.getMonth()+1;
+mon = this.date.getMonth() + 1;
 year = this.date.getFullYear();
-finalDate:string='';
-centerId:any;
+finalDate = '';
+centerId: any;
   constructor(private myService: GetDataService) {
     console.log('Inside constructor');
     }
@@ -23,31 +23,31 @@ centerId:any;
   ngOnInit(): void {
 this.getLocation();
   }
- getCenterId(data:any)
+ getCenterId(data: any): any
  {
-  this.centerId= data.center_id;
+  this.centerId = data.center_id;
   console.log(this.centerId);
-  this.finalDate =this.day + '-' + this.mon + '-' + this.year;
+  this.finalDate = this.day + '-' + this.mon + '-' + this.year;
   console.log(this.finalDate);
-  this.myService.setCenterI(this.centerId,this.finalDate);
+  this.myService.setCenterI(this.centerId, this.finalDate);
  }
-  getLocation()
+  getLocation():any
   {
-   
-    if('geolocation' in navigator)
-    {
-      navigator.geolocation.watchPosition((success)=>
-      {
-        this.lat=success.coords.latitude;
-        this.lon =success.coords.longitude;
 
-        this.myService.getDataByCurrentLoc(this.lat, this.lon).subscribe(res=>
+    if ('geolocation' in navigator)
+    {
+      navigator.geolocation.watchPosition((success) =>
+      {
+        this.lat = success.coords.latitude;
+        this.lon = success.coords.longitude;
+
+        this.myService.getDataByCurrentLoc(this.lat, this.lon).subscribe((res:any) =>
          {
-           this.data =res.centers;
+           this.data = res.centers;
        //  console.log(this.data);
         //   console.log('weatherrr'+this.weather);
-         })
-      })
+         });
+      });
     }
   }
 }

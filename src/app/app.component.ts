@@ -11,5 +11,5 @@ export class AppComponent {
   title = 'VaccinationAssignment';
   public isMenuCollapsed = true;
 
-  
+
 }

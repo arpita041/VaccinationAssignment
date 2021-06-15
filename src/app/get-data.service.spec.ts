@@ -5,7 +5,7 @@ import { Post } from './post';
 
 describe('GetDataService', () => {
   let service: GetDataService;
-  let httpMock :HttpTestingController;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -13,9 +13,9 @@ describe('GetDataService', () => {
       providers: [GetDataService]
     });
     service = TestBed.inject(GetDataService);
-    httpMock =TestBed.inject(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
-afterEach(()=>
+  afterEach(() =>
 {
   httpMock.verify();
 });

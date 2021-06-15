@@ -6,10 +6,10 @@ import { DetailByStateComponent } from './detail-by-state/detail-by-state.compon
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path : 'pin' , component:DetailByPinComponent},
-  {path: 'home' , component:HomeComponent},
-  {path:'state' , component:DetailByStateComponent},
-  {path: 'calander', component:CalanderComponent}
+  {path : 'pin' , component: DetailByPinComponent},
+  {path: 'home' , component: HomeComponent},
+  {path: 'state' , component: DetailByStateComponent},
+  {path: 'calander', component: CalanderComponent}
 ];
 
 @NgModule({

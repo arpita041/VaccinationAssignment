@@ -6,39 +6,39 @@ import { Post } from './post';
   providedIn: 'root'
 })
 export class GetDataService {
-id:number=0;
-date:string='';
-  constructor(private http:HttpClient) { }
+id = 0;
+date = '';
+  constructor(private http: HttpClient) { }
 
-  getDetailByPin(pin:any,date:any)
+  getDetailByPin(pin: any, date: any) :any
   {
      return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pin}&date=${date}`);
   }
-  getDataByCurrentLoc(lat:any, lon:any)
+  getDataByCurrentLoc(lat: any, lon: any):any
   {
-    return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/centers/public/findByLatLong?lat=${lat}&long=${lon}`)
+    return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/centers/public/findByLatLong?lat=${lat}&long=${lon}`);
   }
-  getState()
+  getState():any
   {
     return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/admin/location/states`);
   }
-  getDistrict(id:any)
+  getDistrict(id: any):any
   {
     return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/admin/location/districts/${id}`);
   }
-  getDataByDisTd(id:any, date:any)
+  getDataByDisTd(id: any, date: any):any
   {
-    return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${id}&date=${date}`)
+    return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${id}&date=${date}`);
   }
-  setCenterI(id:any, date:any)
+  setCenterI(id: any, date: any):any
   {
     this.id = id;
     this.date = date;
     console.log('pin in the service', this.id);
   }
-calanderByCenterId()
+calanderByCenterId():any
 {
-  return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByCenter?center_id=${this.id}&date=${this.date}`)
+  return this.http.get<any>(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByCenter?center_id=${this.id}&date=${this.date}`);
 }
 
 }
